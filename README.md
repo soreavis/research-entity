@@ -57,7 +57,7 @@ Use your platform's native plugin or skill manager where one exists — those la
 | **Other agents** | `npx skills add soreavis/research-entity` | `npx skills update` |
 
 > [!NOTE]
-> The repo is currently **private** — the lanes above activate once it goes public. `gh skill` is in preview and its flags may change.
+> `gh skill` is in preview and its flags may change.
 
 Step-by-step instructions, the manual-symlink lane for development, and verification steps are in **[docs/install.md](docs/install.md)**.
 

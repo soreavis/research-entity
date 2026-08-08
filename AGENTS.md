@@ -26,12 +26,13 @@ scripts/build-skill-zips.sh       builds dist/ zips for upload-based runtimes (c
 - **Every factual claim in a segment file cites a primary source.** Source-or-silence; see CONTRIBUTING.md.
 - **Run the CI checks locally before committing**: the spec measurement, `npx --yes markdownlint-cli2 "**/*.md" "!node_modules"`, and `bash scripts/build-skill-zips.sh`.
 
-## Going-public checklist
+## Release checklist
 
-The repo is private. When flipping it public, in this order — each later step is impossible while private:
+Every install lane resolves to either `main` or a release tag, so both must be good before a version is announced:
 
-1. Flip the repo public (`gh repo edit soreavis/research-entity --visibility public`).
-2. Upload `docs/assets/hero.jpg` under Settings → General → Social preview. There is no API for this, and the section does not appear on a private repo.
-3. Enable private vulnerability reporting — a public-repo-only feature that SECURITY.md's primary link depends on.
-4. Smoke-test the install lanes in the README table — none can fetch a private repo, so nothing is functionally proven until then.
-5. Cut a release and attach the dist zips, so the ChatGPT lane has a stable download.
+1. Bump the version in all 8 manifests and the README badge together — CI's `manifests` job fails on drift.
+2. Add the `CHANGELOG.md` section under a new heading (the changelog enforcer gates PRs on this).
+3. `bash scripts/check.sh` — every gate CI runs, including the hygiene guard.
+4. Tag and cut the release with `scripts/build-skill-zips.sh` output attached; the ChatGPT lane depends on a stable zip download.
+
+The only repo setting with no API is **Settings → General → Social preview** (`docs/assets/hero.jpg`) — re-check it by eye after any repo recreate, since it does not survive one.

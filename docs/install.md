@@ -2,8 +2,6 @@
 
 `research-entity` is one skill tree with a thin manifest per platform, so you install it with whatever plugin or skill manager your agent already has. Pick your lane below — they all end in the same place: a `/research-entity` command (or equivalent) in your agent.
 
-> **The repo is currently private.** Every lane below needs it to be public (or you to have access) before the commands can fetch it. If a command fails with a not-found error, that is why.
-
 ## Prerequisites
 
 - macOS, Linux, or WSL

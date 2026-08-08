@@ -14,7 +14,7 @@ Guides for **research-entity**. The [root README](../README.md) is the overview;
 | File | What it covers |
 |---|---|
 | [README.md](../README.md) | Overview, install matrix, usage, badges |
-| [AGENTS.md](../AGENTS.md) | Maintenance guidance for AI agents working on this repo, incl. the going-public checklist |
+| [AGENTS.md](../AGENTS.md) | Maintenance guidance for AI agents working on this repo, incl. the release checklist |
 | [CONTRIBUTING.md](../CONTRIBUTING.md) | Ground rules — source-or-silence, spec limits, modularity |
 | [SECURITY.md](../SECURITY.md) | What to report privately vs publicly, disclosure timeline |
 | [CHANGELOG.md](../CHANGELOG.md) | CalVer release history |
