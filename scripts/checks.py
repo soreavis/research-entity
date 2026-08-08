@@ -31,6 +31,18 @@ PROVENANCE = [
     (r"\b(my|our) (employer|client|company)\b", "first-person employer/client reference"),
 ]
 
+# Generic ("non-provider") secret shapes: private keys, credentialed connection
+# strings, auth headers, long assigned literals. GitHub scans provider tokens on
+# public repos for free, but generic-pattern scanning needs an org-owned repo on
+# Team+ with Secret Protection — so this repo cannot have it, and gates it here.
+SECRETS = [
+    (r"-----BEGIN [A-Z ]*PRIVATE KEY-----", "private key block"),
+    (r"[a-z][a-z0-9+.\-]*://[^/\s:@]+:[^/\s:@]+@", "credentialed connection string"),
+    (r"(?i)authorization\s*:\s*(bearer|basic)\s+[A-Za-z0-9._~+/=\-]{16,}", "auth header with credential"),
+    (r"(?i)\b(api[_-]?key|secret|token|password|passwd|credential)s?\b\W{0,3}[:=]\s*"
+     r"[\"'][A-Za-z0-9/+_.\-]{16,}[\"']", "assigned credential literal"),
+]
+
 MANIFESTS = [
     ".claude-plugin/plugin.json", ".claude-plugin/marketplace.json",
     ".codex-plugin/plugin.json", ".cursor-plugin/plugin.json",
@@ -165,6 +177,9 @@ def hygiene():
             for pattern, why in PROVENANCE:
                 if re.search(pattern, line, re.I):
                     failed = fail(f"{where} {why}")
+            for pattern, why in SECRETS:
+                if re.search(pattern, line):
+                    failed = fail(f"{where} {why} — never commit a live credential")
     if not failed:
         print("hygiene clean")
     return failed

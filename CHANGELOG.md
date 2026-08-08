@@ -14,6 +14,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ### Added
 
 - `hygiene` gate now blocks reintroduction of scrubbed identities (matched against a hashed denylist, so the guard never republishes what it forbids) and session-transcript quotes.
+- `hygiene` gate also scans for generic secret shapes — private key blocks, credentialed connection strings, auth headers, and assigned credential literals. This covers the gap GitHub's own generic-pattern secret scanning would fill, which is unavailable here: it requires an organization-owned repository on Team or higher with Secret Protection, while provider-token scanning and push protection are free on public repos and are enabled.
 
 ## [2026.08.1] - 2026-08-07
 
