@@ -64,12 +64,25 @@ Step-by-step instructions, the manual-symlink lane for development, and verifica
 ## Usage
 
 ```
-/research-entity "Stripe"                       # wizard asks type/depth/audience/export
+# Simplest form — the wizard asks for type, depth, audience and export
+/research-entity "Stripe"
+
+# Full due-diligence dossier, written for an investor, as Markdown and HTML
 /research-entity "Acme Corp" --type=due-diligence --audience=investor --depth=deep --export=both
+
+# Devtools vendor, pulling GitHub and LinkedIn signals, with a tech-stack audit
 /research-entity "DevTool X" --vertical=devtools --data-sources=github,linkedin --audit=tech-stack
-/research-entity "Acme Corp" --year-over-year   # auto-finds prior dossier, generates delta
+
+# Re-run against last year's dossier — finds it automatically, returns the delta
+/research-entity "Acme Corp" --year-over-year
+
+# Public company, benchmarked against its cohort, sourced from SEC filings
 /research-entity "Public SaaS Y" --stage=public --benchmark --data-sources=sec
+
+# Compare two dossiers you already have
 /research-entity --compare=./a-research.md,./b-research.md
+
+# Condense an existing dossier into a sales battle card
 /research-entity "Acme Corp" --export=battle-card
 ```
 
