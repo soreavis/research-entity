@@ -2,7 +2,7 @@
   <img src="docs/assets/hero.jpg" alt="A robed archivist raises a glowing lantern toward a towering wall of card-catalog drawers in a vast dark archive, a few drawers lit amber high above the dust." width="100%">
 </p>
 
-# The Dossier Machine
+# The Dossier Machine aka Research Entity
 
 [![CI](https://github.com/soreavis/research-entity/actions/workflows/ci.yml/badge.svg)](https://github.com/soreavis/research-entity/actions/workflows/ci.yml)
 ![Version](https://img.shields.io/static/v1?label=version&message=2026.08.1&color=blue)
