@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
+- **Display name is now "The Dossier Machine aka Research Entity".** The brand name alone gave a reader no way to connect the repo to the `/research-entity` command they actually type, or to the package name in every manifest. Both halves now appear together in the README title and the Claude and Codex `displayName` fields.
+
 - **Usage examples put each comment on its own line above its command.** Trailing comments sat past column 48, so the explanation was the first thing cut off on a narrow viewport — the reader kept the flags and lost the reason for them. Each example also gained a written-out purpose rather than a terse fragment.
 - Anonymized production cases in `lessons.md`, `internal-consistency.md` and `SKILL.md` no longer carry identity anchors. The cases kept their placeholder labels but retained real founder names, sibling brand names, the acquirer's law firm, and a metric fingerprint precise enough to reverse-search the subject in a single query. Identity anchors are stripped; the calibration figures are replaced with illustrative values that preserve each lesson's arithmetic and teaching point.
 - Two lessons that framed their case around the requester's own employer are restated as general rules, and a verbatim session-transcript quote was removed.
