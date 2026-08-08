@@ -1,0 +1,17 @@
+# macOS
+.DS_Store
+
+# Local-only working files
+_local/
+
+# Python cache (CI validation script)
+__pycache__/
+*.pyc
+
+# Build artifacts
+dist/
+*.zip
+
+# Editor
+.idea/
+.vscode/

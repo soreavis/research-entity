@@ -1,0 +1,23 @@
+{
+  "name": "research-entity",
+  "owner": {
+    "name": "Julian Soreavis",
+    "url": "https://github.com/soreavis"
+  },
+  "plugins": [
+    {
+      "name": "research-entity",
+      "source": {
+        "source": "github",
+        "repo": "soreavis/research-entity"
+      },
+      "version": "2026.08.1",
+      "description": "Board-ready competitive-intelligence and due-diligence dossiers on any legal entity — 23 sections, cross-validated sources, red-flag scan, HTML/PDF export.",
+      "category": "research",
+      "strict": true
+    }
+  ],
+  "metadata": {
+    "description": "Marketplace for the research-entity due-diligence dossier skill"
+  }
+}

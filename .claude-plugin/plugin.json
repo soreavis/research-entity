@@ -1,0 +1,27 @@
+{
+  "name": "research-entity",
+  "displayName": "The Dossier Machine (research-entity)",
+  "version": "2026.08.1",
+  "description": "Board-ready competitive-intelligence and due-diligence dossiers on any legal entity — company, startup, or vendor. 23-section report: executive briefing (BLUF, scorecard, SWOT, threat heat map, strategic playbook, monitoring watchlist), founders, funding, product and technical architecture, pricing, customers, competition, community reception, security posture, and an 8-pattern red-flag risk scan. Every datapoint cross-validated against multiple free public sources, hallucination-audited, mermaid render-validated, with HTML/PDF/battle-card/VC-memo export.\n\nDrop in a company name: the skill gathers evidence from free public sources, cross-validates every datapoint, labels aggregator-only data, and outputs a structured Markdown dossier with a confidence-and-methodology appendix.\n\nTry asking:\n/research-entity \"Stripe\"\n/research-entity \"Acme Corp\" --type=due-diligence --audience=investor --depth=deep --export=both\n/research-entity \"DevTool X\" --vertical=devtools --data-sources=github,linkedin --audit=tech-stack\n/research-entity \"Acme Corp\" --year-over-year\n/research-entity \"Acme Corp\" --export=battle-card\n\n23 sections · 9 vertical templates · 7 stage templates · 4 focused audits · 5 analytic frameworks + 7 Powers moat scoring.",
+  "author": {
+    "name": "Julian Soreavis",
+    "url": "https://github.com/soreavis"
+  },
+  "homepage": "https://github.com/soreavis/research-entity",
+  "repository": "https://github.com/soreavis/research-entity",
+  "license": "MIT",
+  "keywords": [
+    "competitive-intelligence",
+    "due-diligence",
+    "company-research",
+    "osint",
+    "vendor-assessment",
+    "investment-memo",
+    "battle-card",
+    "swot",
+    "moat-scoring",
+    "risk-scan",
+    "claude-code",
+    "claude-cowork"
+  ]
+}

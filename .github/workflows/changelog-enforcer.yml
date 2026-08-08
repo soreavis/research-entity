@@ -1,0 +1,34 @@
+name: Changelog enforcer
+
+on:
+  pull_request:
+    branches: [main]
+    # `labeled`/`unlabeled` so applying a skipLabel re-evaluates the gate
+    # instead of leaving a stale red that needs a manual re-run.
+    types: [opened, synchronize, reopened, labeled, unlabeled]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  # NOT cancel-in-progress: a cancelled check-run for a required context blocks
+  # the merge even when a newer successful run of the same context exists.
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  enforce:
+    name: CHANGELOG entry under [Unreleased]
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with: { persist-credentials: false }
+      - name: Verify CHANGELOG.md updated
+        uses: dangoslen/changelog-enforcer@8b5e9dc3121363bb7c0115f8533404d92af382de # v3.7.0
+        with:
+          changeLogPath: CHANGELOG.md
+          # Comma-separated (NOT newline-separated). For trivial PRs that don't
+          # need a changelog line: typo fixes, CI tweaks, dep bumps.
+          skipLabels: 'skip changelog,documentation,ci,dependencies,github-actions'

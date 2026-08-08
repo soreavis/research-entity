@@ -1,0 +1,32 @@
+{
+  "name": "research-entity",
+  "version": "2026.08.1",
+  "description": "Board-ready competitive-intelligence and due-diligence dossiers on any legal entity — company, startup, or vendor. 23-section report: executive briefing (BLUF, scorecard, SWOT, threat heat map, strategic playbook, monitoring watchlist), founders, funding, product and technical architecture, pricing, customers, competition, community reception, security posture, and an 8-pattern red-flag risk scan. Every datapoint cross-validated against multiple free public sources, hallucination-audited, mermaid render-validated, with HTML/PDF/battle-card/VC-memo export.",
+  "author": {
+    "name": "Julian Soreavis",
+    "url": "https://github.com/soreavis"
+  },
+  "homepage": "https://github.com/soreavis/research-entity",
+  "repository": "https://github.com/soreavis/research-entity",
+  "license": "MIT",
+  "keywords": [
+    "competitive-intelligence",
+    "due-diligence",
+    "company-research",
+    "osint",
+    "vendor-assessment"
+  ],
+  "skills": "./skills",
+  "interface": {
+    "displayName": "The Dossier Machine",
+    "shortDescription": "Competitive-intel and due-diligence dossiers on any company",
+    "longDescription": "Drop in a company name: the skill gathers evidence from free public sources, cross-validates every datapoint, labels aggregator-only data, and returns a 23-section board-ready dossier with confidence scoring and an always-on red-flag scan.",
+    "developerName": "Julian Soreavis",
+    "category": "Research",
+    "capabilities": [
+      "Research",
+      "Due diligence",
+      "Reporting"
+    ]
+  }
+}

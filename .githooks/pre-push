@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Refuse to push anything CI would reject. Enable once per clone:
+#   git config core.hooksPath .githooks
+exec bash "$(git rev-parse --show-toplevel)/scripts/check.sh"

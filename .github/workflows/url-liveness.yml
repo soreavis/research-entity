@@ -1,0 +1,49 @@
+name: URL liveness
+
+# Deterministic half of source maintenance: sweeps every URL in the skill files
+# monthly and files/updates a report issue when something looks dead. The
+# semantic half is the skill's own `/research-entity --validate-skill-sources`
+# mode. Never reds the repo — a dead external site is maintenance, not a broken
+# build. Scheduled off the top of the hour per GitHub's guidance that on-the-hour
+# runs are most likely to be delayed or dropped.
+
+on:
+  schedule:
+    - cron: '23 7 2 * *'
+  workflow_dispatch:
+
+concurrency:
+  group: url-liveness
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  sweep:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with: { persist-credentials: false }
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
+        with: { python-version: '3.12' }
+      - name: Run sweep
+        run: |
+          python3 scripts/url-liveness.py | tee report.md
+          echo "ACTIONABLE=$(grep -oE 'Actionable \(dead \+ unreachable \+ error\): [0-9]+' report.md | grep -oE '[0-9]+$')" >> "$GITHUB_ENV"
+      - name: File or update the report issue
+        if: env.ACTIONABLE != '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          title="URL liveness report"
+          body="$(printf 'Automated sweep found %s actionable URLs (run: %s/%s/actions/runs/%s).\n\n' "$ACTIONABLE" "$GITHUB_SERVER_URL" "$GITHUB_REPOSITORY" "$GITHUB_RUN_ID"; sed -n '/## DEAD/,/## LIVE/p' report.md)"
+          existing=$(gh issue list --state open --search "in:title \"$title\"" --json number -q '.[0].number' || true)
+          if [ -n "$existing" ]; then
+            gh issue comment "$existing" --body "$body"
+          else
+            gh issue create --title "$title" --body "$body"
+          fi
