@@ -182,8 +182,8 @@ async function listDossiers(filters: any) {
   );
   return applyFilters(results, filters);
 }
-// ... rest of implementations
 
+// ... rest of implementations
 const transport = new StdioServerTransport();
 await server.connect(transport);
 ```

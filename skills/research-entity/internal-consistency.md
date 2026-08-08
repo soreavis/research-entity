@@ -624,6 +624,7 @@ The following verbs / phrases trigger Tetlock-discipline review:
 Pre-publication scan: grep the dossier for these phrases and rewrite each instance with a Tetlock-compatible equivalent OR an explicit time horizon OR an effort estimate.
 
 ```bash
+# Find absolute claims that need a horizon or a probability
 grep -nE '\b(categorically|cannot trivially|will never|must (be|have|fail)|impossible|guaranteed|inevitable|never |always |only)\b' "$OUTPUT"
 ```
 

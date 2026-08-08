@@ -72,7 +72,9 @@ ChatGPT takes a zip upload rather than a repo reference: **Skills → Create →
 ## Building the zip
 
 ```bash
+# Build the distributable zip
 bash scripts/build-skill-zips.sh
+
 # → dist/research-entity.zip
 ```
 
@@ -89,6 +91,7 @@ npx skills add soreavis/research-entity
 If you want to hack on the skill and see edits immediately, symlink the **skill subdirectory** (not the repo root — the runtime expects `SKILL.md` at the symlink's root):
 
 ```bash
+# Clone, then symlink the skill subdirectory so edits apply immediately
 git clone https://github.com/soreavis/research-entity ~/code/research-entity
 ln -s ~/code/research-entity/skills/research-entity ~/.claude/skills/research-entity
 ```

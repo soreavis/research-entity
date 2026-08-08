@@ -180,6 +180,7 @@ For an entity with ≤30 named customers, run this in parallel during source gat
 ```bash
 # For each customer, check both directions
 for customer in "${customers[@]}"; do
+
   # Direction A: entity case study about customer
   tavily_search "<entity> <customer> case study"
 

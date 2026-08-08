@@ -5,6 +5,7 @@ How to work on this repo without tripping over its gates. The short ground rules
 ## Dev setup
 
 ```bash
+# Clone, then symlink the skill subdirectory — not the repo root
 git clone https://github.com/soreavis/research-entity ~/code/research-entity
 ln -s ~/code/research-entity/skills/research-entity ~/.claude/skills/research-entity
 ```
@@ -24,12 +25,14 @@ scripts/                  build-skill-zips.sh (dist), url-liveness.py (source he
 ## Run the checks locally before pushing
 
 ```bash
+# Every CI gate, the same implementation CI runs
 bash scripts/check.sh          # every CI gate, same implementation CI runs
 ```
 
 Better: make git refuse to push anything CI would reject —
 
 ```bash
+# Make git refuse to push anything CI would reject
 git config core.hooksPath .githooks
 ```
 

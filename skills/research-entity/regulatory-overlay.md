@@ -144,6 +144,7 @@ Compliance regimes have material business impact: **GDPR fines** can be 4% of gl
 **Step 2 — source gathering**: when entity HQ + customer geography + vertical are known, identify applicable regimes:
 
 ```python
+# Derive the applicable regimes from HQ, customer geography and vertical
 applicable_regimes = []
 if entity_hq in ["EU", "UK"] or any_customer_in_eu_uk:
     applicable_regimes.append("GDPR")
@@ -155,6 +156,7 @@ if vertical in ["fintech", "payment"]:
     applicable_regimes.append("DORA" if any_eu_finance_customer else None)
 if uses_ml_for_decision_making:
     applicable_regimes.append("EU AI Act")
+
 # ... etc
 ```
 

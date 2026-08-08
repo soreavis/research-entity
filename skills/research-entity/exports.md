@@ -16,6 +16,7 @@ Key features:
 - Mermaid via CDN (`mermaid@10`), initialized after DOM ready
 
 ```bash
+# Emit a self-contained HTML dossier alongside the markdown
 OUTPUT_HTML="${OUTPUT%.md}.html"
 ENTITY_TITLE="${ENTITY:-Research Dossier}"
 
@@ -222,6 +223,7 @@ HTML_FOOT
 Pandoc + xelatex (preferred — full Unicode) with mermaid-filter for native diagram rendering. Falls back to Chrome headless on the HTML if xelatex isn't available.
 
 ```bash
+# Prefer xelatex for full Unicode; fall back to headless Chrome
 OUTPUT_PDF="${OUTPUT%.md}.pdf"
 
 if command -v mermaid-filter >/dev/null 2>&1 && command -v xelatex >/dev/null 2>&1; then

@@ -190,6 +190,7 @@ If `--validate-skill-sources` is set, run skill-maintenance audit:
 
 2. **Extract all URLs from skill files**:
 ```bash
+# Collect every URL the skill files reference, deduplicated
 grep -rhoE 'https?://[a-zA-Z0-9.-]+(/[a-zA-Z0-9._/?=&%~+#-]*)?' ~/.claude/skills/research-entity/ \
   | sed 's/[.,;)"]*$//' \
   | sort -u > /tmp/skill-urls.txt
@@ -197,6 +198,7 @@ grep -rhoE 'https?://[a-zA-Z0-9.-]+(/[a-zA-Z0-9._/?=&%~+#-]*)?' ~/.claude/skills
 
 3. **Run URL validation**:
 ```bash
+# Resolve each one, following redirects, with a browser user-agent
 while read -r url; do
   code=$(curl -s -o /dev/null -w "%{http_code}" -L --max-time 15 \
     -A "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36" \
@@ -476,6 +478,7 @@ Write to `--output` path in the 23-section structure (or comparison-mode 15-sect
 **Signal-label scan (REQUIRED, every dossier; load `voice-and-style.md` Signal-label discipline section):** run the bare-dot scan. Any signal cell that is a colour dot with no word label is a **hard gate** — fix before ship. Also run the repetition check: a label appearing more than ~3× in a 15-row Scorecard means the labels are not differentiating, so re-read those rows and pick dimension-specific words. Reading the Signal column top-to-bottom in isolation must produce a coherent summary of the entity; if it reads as a run of identical words, the column is decorative and has failed.
 
 ```bash
+# Hard gate: every signal cell needs a word label, not a bare dot
 BARE=$(grep -nE '\|[[:space:]]*(🟢|🟡|🔴|⚪)[[:space:]]*\|' "$OUTPUT")
 [ -n "$BARE" ] && { echo "❌ bare signal dots:"; echo "$BARE"; } || echo "✓ all signal cells labelled"
 grep -oE '(🟢|🟡|🔴|⚪) [A-Z][A-Za-z/-]+' "$OUTPUT" | sort | uniq -c | sort -rn | awk '$1>3 {print "⚠️  over-used:", $0}'
@@ -493,6 +496,7 @@ grep -oE '(🟢|🟡|🔴|⚪) [A-Z][A-Za-z/-]+' "$OUTPUT" | sort | uniq -c | so
 
 **URL validation (unless `--no-validate-urls`):**
 ```bash
+# Extract the dossier's URLs, then check each one resolves
 grep -oE 'https://[][:alnum:]._/?=#&%+:~@-]+' "$OUTPUT" | sed 's/[.,;)"]*$//' | sort -u > /tmp/urls.txt
 while read -r url; do
   code=$(curl -s -o /dev/null -w "%{http_code}" -L --max-time 15 \

@@ -164,6 +164,7 @@ For dossier purposes, always cite **the bucket bound as published**, not a fabri
 **Step 2 — source gathering**: when the entity has any marketplace presence (auto-detected from the company's main domain or `/integrations` page), run a marketplace scan in parallel:
 
 ```python
+# Marketplaces worth scanning when the entity has any listing presence
 marketplaces_to_check = [
   "Salesforce AppExchange",
   "HubSpot App Marketplace",

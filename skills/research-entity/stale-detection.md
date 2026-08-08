@@ -34,6 +34,7 @@ This module:
 ## Computation
 
 ```bash
+# Age the dossier in days, then decay each confidence component
 DOSSIER_DATE=$(grep '^research_date:' "$DOSSIER" | awk '{print $2}')
 TODAY=$(date +%Y-%m-%d)
 AGE_DAYS=$(( ($(date -j -f %Y-%m-%d "$TODAY" +%s) - $(date -j -f %Y-%m-%d "$DOSSIER_DATE" +%s)) / 86400 ))
@@ -44,11 +45,11 @@ AGE_DAYS=$(( ($(date -j -f %Y-%m-%d "$TODAY" +%s) - $(date -j -f %Y-%m-%d "$DOSS
 # Composite confidence after decay = original confidence - sum-of-weighted-decays
 
 # Decay weights (matches confidence-scoring.md weights):
-#  - Multi-source corroboration (30) — decays as facts age (-1/30d after 90)
-#  - Source verifiability (25) — decays slowly (-0.5/30d after 180)
-#  - URL freshness (15) — decays fast (-2/30d after 60)
-#  - Hallucination audit (15) — decays slowly (-0.5/30d after 365; audit is method, not data)
-#  - Voice/format (15) — does NOT decay (formatting is timeless)
+# - Multi-source corroboration (30) — decays as facts age (-1/30d after 90)
+# - Source verifiability (25) — decays slowly (-0.5/30d after 180)
+# - URL freshness (15) — decays fast (-2/30d after 60)
+# - Hallucination audit (15) — decays slowly (-0.5/30d after 365; audit is method, not data)
+# - Voice/format (15) — does NOT decay (formatting is timeless)
 ```
 
 ## Output template (insert as §23.X)

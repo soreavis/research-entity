@@ -123,7 +123,7 @@ When a customer logo from §9 disappears between versions, this is often a stron
 # Set difference of customer logos
 comm -23 <(grep -oE 'class="customer-logo">[^<]+' "$PREV" | sort -u) \
          <(grep -oE 'class="customer-logo">[^<]+' "$CURR" | sort -u) \
-  > /tmp/lost-customers.txt
+  /tmp/lost-customers.txt
 ```
 
 ## Output formats

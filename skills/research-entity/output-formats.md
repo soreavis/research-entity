@@ -32,20 +32,21 @@ sed -n '/^## 21\. Final Assessment/,/^## 22/p' "$FULL_MD" > /tmp/verdict.md
 
 # Compose 1-page MD
 cat > "$EXEC_MD" <<EOF
+
 # Executive Summary — <entity>
 <as-of date> · <composite confidence>/100 · <model + effort>
 
-## What it is
+# # What it is
 <BLUF — 4 sentences>
 
-## Scorecard (top 8)
+# # Scorecard (top 8)
 <table extract — 8 most important rows>
 
-## 3 strengths · 3 risks
+# # 3 strengths · 3 risks
 **Strengths:** ... · ... · ...
 **Risks:** ... · ... · ...
 
-## Verdict
+# # Verdict
 <1 sentence>
 
 EOF

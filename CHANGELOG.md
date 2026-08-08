@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
+- **Code examples follow one shape repo-wide.** Each block now opens with a one-line comment, the commands sit directly under it, and a blank line separates each group. Trailing comments past the command were the first thing a narrow viewport cut off, so the reason for a flag was lost while the flag survived.
+
 - **Display name is now "The Dossier Machine aka Research Entity".** The brand name alone gave a reader no way to connect the repo to the `/research-entity` command they actually type, or to the package name in every manifest. Both halves now appear together in the README title and the Claude and Codex `displayName` fields.
 
 - **Usage examples put each comment on its own line above its command.** Trailing comments sat past column 48, so the explanation was the first thing cut off on a narrow viewport — the reader kept the flags and lost the reason for them. Each example also gained a written-out purpose rather than a terse fragment.

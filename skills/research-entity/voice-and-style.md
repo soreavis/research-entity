@@ -90,10 +90,12 @@ Same fact must match across all dossier sections (e.g., employee count in §3 mu
 ```bash
 # Example: check employee count consistency
 grep -inE "[0-9]+ employees|employee count|headcount" "$DOSSIER" | sort -u
+
 # If multiple distinct numbers appear, reconcile or flag explicitly.
 
 # Example: check funding total consistency
 grep -oE "\\\$[0-9.]+M" "$DOSSIER" | sort | uniq -c | sort -rn
+
 # Same dollar amount should appear consistently; divergent appearances = inconsistency to fix.
 ```
 
@@ -224,7 +226,9 @@ Read the Signal column alone: *Established · Small · Undisclosed · N/A*. That
 ### Pre-ship scan (run in Step 5)
 
 ```bash
+# Assert every status dot in a table cell is followed by a word label
 F="$1"   # path to dossier .md
+
 # Extract every table cell containing a status dot and assert a label follows it.
 BARE=$(grep -nE '\|[[:space:]]*(🟢|🟡|🔴|⚪)[[:space:]]*\|' "$F")
 if [ -n "$BARE" ]; then
@@ -232,6 +236,7 @@ if [ -n "$BARE" ]; then
 else
   echo "✓ all signal cells carry a label"
 fi
+
 # Repetition check — a label used >3× in one table is under-differentiated
 grep -oE '(🟢|🟡|🔴|⚪) [A-Z][A-Za-z/-]+' "$F" | sort | uniq -c | sort -rn | awk '$1>3 {print "⚠️  over-used label:", $0}'
 ```
@@ -295,6 +300,7 @@ The §22 Glossary is **not optional cosmetic content** — it is the reader's on
 Run this scan after Draft (Step 4) and before Export (Step 7). It identifies acronyms used in the body that don't have a glossary entry:
 
 ```bash
+# Find acronyms used twice or more in the body but missing from the glossary
 OUTPUT="$1"   # path to dossier .md
 
 # Extract every all-caps acronym (2+ chars) used in the body, count occurrences
@@ -430,6 +436,7 @@ A competitive / due-diligence dossier must read as a third-party external evalua
 ### 12 leak categories
 
 ```bash
+# Twelve leak categories, each checked separately so the report names one
 F="$1"   # path to dossier .md
 
 check() {
