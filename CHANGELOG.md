@@ -21,6 +21,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - `hygiene` gate now blocks reintroduction of scrubbed identities (matched against a hashed denylist, so the guard never republishes what it forbids) and session-transcript quotes.
 - `hygiene` gate also scans for generic secret shapes — private key blocks, credentialed connection strings, auth headers, and assigned credential literals. This covers the gap GitHub's own generic-pattern secret scanning would fill, which is unavailable here: it requires an organization-owned repository on Team or higher with Secret Protection, while provider-token scanning and push protection are free on public repos and are enabled.
 
+### Fixed
+
+- `CODE_OF_CONDUCT.md` named another project: its project-specific norms described `property-deep-dive` and its enforcement address pointed at that repo's security advisories. Both now refer to `research-entity`.
+- `.claude/CLAUDE.md` imported `@AGENTS.md`, which resolves relative to the importing file and so pointed at the missing `.claude/AGENTS.md`; Claude Code sessions in this repo never loaded the maintainer guidance. It now imports `@../AGENTS.md`.
+
 ## [2026.08.1] - 2026-08-07
 
 ### Added

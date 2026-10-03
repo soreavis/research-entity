@@ -26,10 +26,10 @@ Examples of unacceptable behaviour include:
 
 ## Project-specific norms
 
-Because `property-deep-dive` informs real-world six- to seven-figure decisions, the technical bar adds two further norms:
+Because `research-entity` informs real decisions about real companies (investments, vendor choices, partnerships), the technical bar adds two further norms:
 
-- **Factual rigor**: arguments are settled by primary government sources, not assertion. Disagreement is fine; "I can't find a primary source for X" is a valid contribution.
-- **Honest hedging**: it is always acceptable, and often required, to say "I don't know — verify with a local notary / tax advisor". Confident-but-unsourced answers are the failure mode this skill exists to prevent.
+- **Factual rigor**: arguments are settled by primary sources (registers, filings, the entity's own published statements), not assertion. Disagreement is fine; "I can't find a primary source for X" is a valid contribution.
+- **Honest hedging**: it is always acceptable, and often required, to say "I don't know — this needs a primary source". Confident-but-unsourced answers are the failure mode this skill exists to prevent.
 
 ## Enforcement Responsibilities
 
@@ -45,7 +45,7 @@ This Code of Conduct applies within all community spaces, and also applies when 
 
 Instances of abusive, harassing, or otherwise unacceptable behaviour may be reported to the project maintainers by opening a confidential security advisory at:
 
-`https://github.com/soreavis/property-deep-dive/security/advisories/new`
+`https://github.com/soreavis/research-entity/security/advisories/new`
 
 (We use the security advisory channel for confidentiality even for non-security-only matters; conversion to a normal issue or moderator-only thread happens after triage.)
 
